@@ -1,0 +1,24 @@
+name: Integral Tests
+on: push
+jobs:
+  integral_testing:
+    name: Integral Testing
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3 
+      uses: actions/setup-python@v5
+      with:
+       python-version: "3"
+    - name: Produce test1 output
+      run: python find_lowest_number.py /test_data/test1_input.txt test1_actual.txt
+    - name: Run test1
+      run: diff test1_expected.txt test1_actual.txt
+    - name: Produce test2 output
+      run: python find_lowest_number.py /test_data/test2_input.txt test2_actual.txt
+    - name: Run test2
+      run: diff test2_expected.txt test2_actual.txt
+    - name: Produce test3 output
+      run: python find_lowest_number.py /test_data/test3_input.txt test3_actual.txt
+    - name: Run test3
+      run: diff test3_expected.txt test3_actual.txt
